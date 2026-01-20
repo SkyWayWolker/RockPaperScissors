@@ -1,0 +1,33 @@
+package rps.logic;
+
+import java.util.Random;
+
+public class GameLogic {
+
+    public enum Outcome {
+        PLAYER_WIN,
+        ENEMY_WIN,
+        DRAW
+    }
+
+    private final Random random = new Random();
+
+    public RpsChoice randomEnemyChoice() {
+        RpsChoice[] v = RpsChoice.values();
+        return v[random.nextInt(v.length)];
+    }
+
+    public Outcome decide(RpsChoice player, RpsChoice enemy) {
+        if (player == enemy) return Outcome.DRAW;
+
+        return switch (player) {
+            case ROCK -> (enemy == RpsChoice.SCISSORS) ? Outcome.PLAYER_WIN : Outcome.ENEMY_WIN;
+            case PAPER -> (enemy == RpsChoice.ROCK) ? Outcome.PLAYER_WIN : Outcome.ENEMY_WIN;
+            case SCISSORS -> (enemy == RpsChoice.PAPER) ? Outcome.PLAYER_WIN : Outcome.ENEMY_WIN;
+        };
+    }
+
+
+    public boolean deathRoll50() {
+        return random.nextBoolean();
+    }
