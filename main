@@ -1,0 +1,61 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+
+        System.out.println("оберіть варіант");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("1 - Один гравець");
+        System.out.println("2 - Два гравця");
+        int choice = scanner.nextInt();
+
+        if (choice == 1) {
+        while(true) {
+            System.out.println("Оберіть варіант");
+            Scanner scanner1 = new Scanner(System.in);
+
+            System.out.println("1 - Камень");
+            System.out.println("2 - Ножниці");
+            System.out.println("3 - Бумага");
+
+            int choice2 = scanner1.nextInt();
+            Random rnd = new Random();
+            int pick = rnd.nextInt(3) + 1;
+
+            switch (pick) {
+                case 1 -> System.out.println("Бот: Камень");
+                case 2 -> System.out.println("Бот: ножницы");
+                case 3 -> System.out.println("Бот: Бумага");
+            }
+
+            if (choice2 == 1) {
+                System.out.println("Камень");
+                if (pick == 1) System.out.println("Ничья");
+                else if (pick == 2) System.out.println("Победа");
+                else System.out.println("Поражение");
+
+            } else if (choice2 == 2) {
+                System.out.println("Ножниці");
+                if (pick == 2) System.out.println("Ничья");
+                else if (pick == 3) System.out.println("Победа");
+                else System.out.println("Поражение");
+
+            } else if (choice2 == 3) {
+                System.out.println("Бумага");
+                if (pick == 3) System.out.println("Ничья");
+                else if (pick == 1) System.out.println("Победа");
+                else System.out.println("Поражение");
+
+            }
+        }
+
+        } else if (choice == 2) {
+            System.out.println("Выбран второй");
+
+        } else {
+            System.out.println("Ошибка");
+        }
+    }
+}
